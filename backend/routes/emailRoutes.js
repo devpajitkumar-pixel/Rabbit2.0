@@ -1,0 +1,9 @@
+import express from "express";
+import { sendEmailController } from "../controllers/emailController.js";
+
+const router = express.Router();
+
+// POST /api/email/send
+router.post("/send", sendEmailController);
+
+export default router;

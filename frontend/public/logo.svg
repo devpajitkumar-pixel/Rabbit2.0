@@ -1,0 +1,22 @@
+<svg
+  width="120"
+  height="120"
+  viewBox="0 0 120 120"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- White background -->
+  <rect width="120" height="120" fill="#ffffff" />
+
+  <!-- Letter R -->
+  <text
+    x="60"
+    y="85"
+    text-anchor="middle"
+    font-size="90"
+    font-weight="900"
+    font-family="Arial Black, Arial, sans-serif"
+    fill="#E11D48"
+  >
+    R
+  </text>
+</svg>
