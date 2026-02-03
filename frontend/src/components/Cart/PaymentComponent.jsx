@@ -2,10 +2,11 @@ import React from "react";
 import { useRazorpay } from "react-razorpay";
 import { SiRazorpay } from "react-icons/si";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const PaymentComponent = ({ amount, onSuccess, onError }) => {
   const { Razorpay, isLoading, error } = useRazorpay();
-  const csrfToken = getState().csrf.token;
+  const { csrfToken } = useSelector((state) => state.csrf);
 
   const handlePayment = async () => {
     // 1️⃣ Get order from backend

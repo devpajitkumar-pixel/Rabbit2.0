@@ -24,7 +24,7 @@ const Checkout = () => {
     phone: "",
   });
 
-  const csrfToken = getState().csrf.token;
+  const { csrfToken } = useSelector((state) => state.csrf);
 
   // Ensure cart is loaded before proceding
 

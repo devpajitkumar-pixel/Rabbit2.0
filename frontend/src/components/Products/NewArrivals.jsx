@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const NewArrivals = () => {
   const scrollRef = useRef(null);
@@ -11,8 +12,7 @@ const NewArrivals = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [newArrivals, setNewArrivals] = useState([]);
-
-  const csrfToken = getState().csrf.token;
+  const { csrfToken } = useSelector((state) => state.csrf);
 
   useEffect(() => {
     const fetchNewArrivals = async () => {

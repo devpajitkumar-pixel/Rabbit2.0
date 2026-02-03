@@ -8,17 +8,17 @@ import FeaturedCollection from "../components/Products/FeaturedCollection";
 import FeaturesSection from "../components/Products/FeaturesSection";
 import axios from "axios";
 import { useFetchProductsQuery } from "../redux/slices/productApiSlice";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [bestSellerProduct, setBestSellerProduct] = useState(null);
+  const { csrfToken } = useSelector((state) => state.csrf);
   const { data, isLoading, error } = useFetchProductsQuery({
     gender: "Women",
     category: "Bottom Wear",
     limit: 8,
   });
   const products = data?.products ?? [];
-
-  const csrfToken = getState().csrf.token;
 
   useEffect(() => {
     // Fetch best seller product

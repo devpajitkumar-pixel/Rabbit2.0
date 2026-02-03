@@ -20,7 +20,7 @@ const OAuthSuccess = () => {
   const redirect = new URLSearchParams(location.search).get("redirect") || "/";
   const isCheckoutRedirect = redirect.includes("checkout");
 
-  const csrfToken = getState().csrf.token;
+  const { csrfToken } = useSelector((state) => state.csrf);
 
   useEffect(() => {
     const fetchUserAndMergeCart = async () => {
