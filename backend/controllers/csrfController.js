@@ -1,12 +1,17 @@
 import { generateCsrfToken } from "../utils/csrf.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const issueCsrfToken = (req, res) => {
   const csrfToken = generateCsrfToken();
 
+  const isProd = process.env.NODE_ENV === "production";
+
   res.cookie("csrfToken", csrfToken, {
-    httpOnly: false, // frontend must read
-    secure: false,
-    sameSite: "lax",
+    httpOnly: false,
+    secure: isProd,
+    sameSite: isProd ? "none" : "lax",
     path: "/",
   });
 
