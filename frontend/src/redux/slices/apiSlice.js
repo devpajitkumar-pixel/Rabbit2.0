@@ -9,6 +9,8 @@ const baseQuery = fetchBaseQuery({
       .find((row) => row.startsWith("csrfToken="))
       ?.split("=")[1];
 
+    console.log(csrfToken);
+
     if (csrfToken) {
       headers.set("x-csrf-token", csrfToken);
     }
