@@ -24,10 +24,7 @@ const Checkout = () => {
     phone: "",
   });
 
-  const csrfToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrfToken="))
-    ?.split("=")[1];
+  const csrfToken = getState().csrf.token;
 
   // Ensure cart is loaded before proceding
 

@@ -19,31 +19,16 @@ import ProductManagement from "./components/Admin/ProductManagement";
 import EditProductPage from "./components/Admin/EditProductPage";
 import OrderManagement from "./components/Admin/OrderManagement";
 
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./redux/store";
 import ProtectedRoute from "./components/Common/ProtectedRoute";
 import OAuthSuccess from "./components/Common/OAuthSuccess";
 import NotFound from "./components/Common/NotFound";
 import Loader from "./components/Common/Loader";
-import { useEffect } from "react";
+import { useGetCsrfQuery } from "./redux/slices/csrfApiSlice";
 
 const App = () => {
-  useEffect(() => {
-    const getCsrf = async () => {
-      try {
-        const res = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/auth/csrf`,
-          {
-            credentials: "include", // VERY IMPORTANT for cookies
-          },
-        );
-      } catch (err) {
-        console.error("CSRF fetch failed:", err);
-      }
-    };
-
-    getCsrf();
-  }, []);
+  useGetCsrfQuery();
   return (
     <Provider store={store}>
       <BrowserRouter>

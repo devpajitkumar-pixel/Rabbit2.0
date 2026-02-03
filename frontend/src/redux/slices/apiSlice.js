@@ -2,15 +2,8 @@ import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BACKEND_URL,
-  prepareHeaders: (headers) => {
-    // CSRF
-    const csrfToken = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("csrfToken="))
-      ?.split("=")[1];
-
-    console.log(csrfToken);
-
+  prepareHeaders: (headers, { getState }) => {
+    const csrfToken = getState().csrf.token;
     if (csrfToken) {
       headers.set("x-csrf-token", csrfToken);
     }

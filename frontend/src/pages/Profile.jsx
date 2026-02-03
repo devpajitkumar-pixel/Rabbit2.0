@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/slices/authSlice";
 import { clearCart } from "../redux/slices/cartSlice";
 import { useLogoutMutation } from "../redux/slices/userApiSlice";
+import { clearCsrfToken } from "../redux/slices/csrfSlice";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
@@ -22,6 +23,7 @@ const Profile = () => {
     await logoutUser();
     dispatch(logout());
     dispatch(clearCart());
+    dispatch(clearCsrfToken());
     navigate("/login");
   };
   return (

@@ -12,10 +12,7 @@ const NewArrivals = () => {
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [newArrivals, setNewArrivals] = useState([]);
 
-  const csrfToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrfToken="))
-    ?.split("=")[1];
+  const csrfToken = getState().csrf.token;
 
   useEffect(() => {
     const fetchNewArrivals = async () => {

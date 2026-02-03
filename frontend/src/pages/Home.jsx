@@ -18,10 +18,7 @@ const Home = () => {
   });
   const products = data?.products ?? [];
 
-  const csrfToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrfToken="))
-    ?.split("=")[1];
+  const csrfToken = getState().csrf.token;
 
   useEffect(() => {
     // Fetch best seller product

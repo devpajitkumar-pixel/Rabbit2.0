@@ -5,10 +5,7 @@ import axios from "axios";
 
 const PaymentComponent = ({ amount, onSuccess, onError }) => {
   const { Razorpay, isLoading, error } = useRazorpay();
-  const csrfToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrfToken="))
-    ?.split("=")[1];
+  const csrfToken = getState().csrf.token;
 
   const handlePayment = async () => {
     // 1️⃣ Get order from backend
