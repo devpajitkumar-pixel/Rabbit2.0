@@ -25,10 +25,8 @@ import ProtectedRoute from "./components/Common/ProtectedRoute";
 import OAuthSuccess from "./components/Common/OAuthSuccess";
 import NotFound from "./components/Common/NotFound";
 import Loader from "./components/Common/Loader";
-import { useGetCsrfQuery } from "./redux/slices/csrfApiSlice";
 
 const App = () => {
-  useGetCsrfQuery();
   return (
     <Provider store={store}>
       <BrowserRouter>
