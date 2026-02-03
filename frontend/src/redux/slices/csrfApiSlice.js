@@ -4,7 +4,7 @@ import { setCsrfToken } from "./csrfSlice";
 export const csrfApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getCsrf: builder.query({
-      query: () => "/api/auth",
+      query: () => "/api/auth/csrf",
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         const { data } = await queryFulfilled;
         dispatch(setCsrfToken(data.csrfToken));
